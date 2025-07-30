@@ -1,4 +1,34 @@
 ### GET /
 GET http://localhost:5000
 
-### 
+###  Register a user POST /AUTH/REGISTER
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username": "gilganaa@gmail.com",
+    "password": "1234569875"
+}
+
+### Login a user POST /AUTH/LOGIN
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username": "gilgana@gmail.com",
+    "password": "1234569875"
+}
+
+
+### Fetch all todod GET /TODOS (protected)
+GET http://localhost:5000/todos
+Authorization: : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc1MDcxLCJleHAiOjE3NTM5NjE0NzF9.OFSb2R67-2GJstJpDB9nEiwojSAe8nxpkakYrFkQSE0
+
+### Creates a new Todo POST /TODOS (protected)
+POST http://localhost:5000/todos
+Authorization: : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc1MDcxLCJleHAiOjE3NTM5NjE0NzF9.OFSb2R67-2GJstJpDB9nEiwojSAe8nxpkakYrFkQSE0
+Content-Type: application/json
+
+{
+    "task": "Complete the backend course"
+}

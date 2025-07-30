@@ -178,7 +178,6 @@
         // access email and pass values
         const emailVal = email.value
         const passVal = password.value
-
         // guard clauses... if authenticating, return
         if (
             isLoading ||
@@ -205,6 +204,7 @@
                 })
                 data = await response.json()
             } else {
+                console.log("Login")
                 // login an account
                 const response = await fetch(apiBase + 'auth/login', {
                     method: 'POST',
@@ -249,23 +249,25 @@
     // CRUD LOGIC
 
     async function fetchTodos() {
-        isLoading = true
+        isLoading = true;
+         console.log("Sending token:", token)  //
         const response = await fetch(apiBase + 'todos', {
-            headers: { 'Authorization': token }
+            headers: { 'Authorization': `Bearer ${token}` }
         })
-        const todosData = await response.json()
+        const todosData = await response.json();
+          console.log("Fetched todosData:", todosData); //
         todos = todosData
         isLoading = false
         renderTodos()
     }
 
     async function updateTodo(index) {
-        // set task complete status to true
+        // set task complete status to true 
         await fetch(apiBase + 'todos' + '/' + index, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization':  `Bearer ${token}` 
             },
             body: JSON.stringify({ task: todos.find(val => val.id === index).task, completed: 1 })
         })
@@ -277,7 +279,7 @@
         await fetch(apiBase + 'todos' + '/' + index, {
             method: 'DELETE',
             headers: {
-                'Authorization': token
+                'Authorization':  `Bearer ${token}` 
             },
         })
         fetchTodos()
@@ -294,7 +296,7 @@
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
+                'Authorization':  `Bearer ${token}` 
             },
             body: JSON.stringify({ task })
         })
