@@ -22,13 +22,26 @@ Content-Type: application/json
 
 ### Fetch all todod GET /TODOS (protected)
 GET http://localhost:5000/todos
-Authorization: : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc1MDcxLCJleHAiOjE3NTM5NjE0NzF9.OFSb2R67-2GJstJpDB9nEiwojSAe8nxpkakYrFkQSE0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc3NDAyLCJleHAiOjE3NTM5NjM4MDJ9.5Xm5AsJcMwLk8_FLMxgmn69SlKXhOgBeDxEA_MK46sw
 
 ### Creates a new Todo POST /TODOS (protected)
 POST http://localhost:5000/todos
-Authorization: : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc1MDcxLCJleHAiOjE3NTM5NjE0NzF9.OFSb2R67-2GJstJpDB9nEiwojSAe8nxpkakYrFkQSE0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc3NDAyLCJleHAiOjE3NTM5NjM4MDJ9.5Xm5AsJcMwLk8_FLMxgmn69SlKXhOgBeDxEA_MK46sw
 Content-Type: application/json
 
 {
-    "task": "Complete the backend course"
+    "task": "Learn German 2"
 }
+
+### Update an existing todo PUT /TODOS/:ID (protected)
+PUT http://localhost:5000/todos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc3NDAyLCJleHAiOjE3NTM5NjM4MDJ9.5Xm5AsJcMwLk8_FLMxgmn69SlKXhOgBeDxEA_MK46sw
+Content-Type: application/json
+
+{
+"completed": 1
+}
+
+### Delete an existing todo DELETE /TODOS/:ID (protected)
+DELETE http://localhost:5000/todos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzUzODc3NDAyLCJleHAiOjE3NTM5NjM4MDJ9.5Xm5AsJcMwLk8_FLMxgmn69SlKXhOgBeDxEA_MK46sw

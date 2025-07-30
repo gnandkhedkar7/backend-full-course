@@ -22,9 +22,23 @@ router.post("/", (req, res) => {
 });
 
 // Update a todo
-router.put("/:id", (req, res) => {});
+router.put("/:id", (req, res) => {
+  const { completed } = req.body;
+  const { id } = req.params;
+
+  const updateTodo = db.prepare(`
+    UPDATE todos SET completed = ? WHERE id = ?`);
+  updateTodo.run(completed, id);
+  res.json({ message: "Todo completed"})
+});
 
 // Delete a todo
-router.delete("/:id", (req, res) => {});
+router.delete("/:id", (req, res) => {
+  const { id } = req.params;
+const userID = req.userId;
+  const deleteTodo = db.prepare(`DELETE FROM todos WHERE id = ? AND user_id = ?`);
+  deleteTodo.run(id, userID);
+  res.send({message: "Todo deleted"})
+});
 
 export default router;
